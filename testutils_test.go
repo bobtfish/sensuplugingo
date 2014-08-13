@@ -6,7 +6,8 @@ import (
 )
 
 func Test_exampleData(t *testing.T) {
-	st, err := exampleData("check01")
+	b, err := exampleData("check01")
+	st := string(b)
 	if err != nil {
 		t.Error("error reading check01")
 	}
@@ -25,5 +26,39 @@ func Test_exampleDataFileNotFound(t *testing.T) {
         } else {
 		t.Error("Didn't report an error")
 	}
+}
+
+func Test_decodeDataSimple(t *testing.T) {
+	d, err := exampleData("check01")
+	if err != nil {
+                t.Error("error loading check01")
+        }
+	var c map[string]interface{}
+	err = decodeCheckData(d, &c)
+	if err != nil {
+                t.Error(fmt.Sprintf("error decodingCheckData for check01: %v", err))
+        }
+	if c["action"] == "create" {
+		t.Log("Can get fields")
+	} else {
+		t.Error("Cannot get fields")
+	}
+}
+
+func Test_decodeDataType(t *testing.T) {
+	d, err := exampleData("check01")
+        if err != nil {
+                t.Error("error loading check01")
+        }
+        var c CheckResult
+	err = decodeCheckData(d, &c)
+	if err != nil {
+                t.Error(fmt.Sprintf("error decodingCheckDataType for check01: %v", err))
+        }
+	if c.Action == "create" {
+		t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", c.Action))
+        }
 }
 
