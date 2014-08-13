@@ -60,5 +60,68 @@ func Test_decodeDataType(t *testing.T) {
         } else {
                 t.Error(fmt.Sprintf("Cannot get fields: %s", e.Action))
         }
+	if e.Occurrences == 1 {
+		t.Log("Can get fields")
+	} else {
+                t.Error(fmt.Sprintf("Cannot get fields: %d", e.Occurrences))
+        }
+	if e.Client.Name == "host01" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Client.Name))
+        }
+	if e.Client.Address == "10.2.1.11" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Client.Address))
+        }
+	// e.Client.Subscriptions all, frontend, proxy
+	if e.Client.Timestamp == 1326390159 {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %d", e.Client.Timestamp))
+        }
+	if e.Check.Name == "frontend_http_check" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Name))
+        }
+	if e.Check.Issued == 1326390169 {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %d", e.Check.Issued))
+        }
+	if e.Check.Output == "HTTP CRITICAL: HTTP/1.1 503 Service Temporarily Unavailable" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Output))
+        }
+	if e.Check.Status == 2 {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %d", e.Check.Status))
+        }
+	if e.Check.Command == "check_http -I 127.0.0.1 -u http://web.example.com/healthcheck.html -R 'pageok'" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Command))
+        }
+	// e.Check.Subscribers frontend
+	if e.Check.Interval == 60 {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Interval))
+        }
+	if e.Check.Handler == "campfire" {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Handler))
+        }
+	// e.Check.History "0", "2" 
+	if e.Check.Flapping == false {
+                t.Log("Can get fields")
+        } else {
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Check.Flapping))
+        }
 }
 
