@@ -33,12 +33,12 @@ func Test_decodeDataSimple(t *testing.T) {
 	if err != nil {
                 t.Error("error loading event01")
         }
-	var c map[string]interface{}
-	err = decodeCheckData(d, &c)
+	var e map[string]interface{}
+	err = decodeCheckData(d, &e)
 	if err != nil {
                 t.Error(fmt.Sprintf("error decodingCheckData for event01: %v", err))
         }
-	if c["action"] == "create" {
+	if e["action"] == "create" {
 		t.Log("Can get fields")
 	} else {
 		t.Error("Cannot get fields")
@@ -50,15 +50,15 @@ func Test_decodeDataType(t *testing.T) {
         if err != nil {
                 t.Error("error loading event01")
         }
-        var c CheckResult
-	err = decodeCheckData(d, &c)
+        var e Event 
+	err = decodeCheckData(d, &e)
 	if err != nil {
                 t.Error(fmt.Sprintf("error decodingCheckDataType for event01: %v", err))
         }
-	if c.Action == "create" {
+	if e.Action == "create" {
 		t.Log("Can get fields")
         } else {
-                t.Error(fmt.Sprintf("Cannot get fields: %s", c.Action))
+                t.Error(fmt.Sprintf("Cannot get fields: %s", e.Action))
         }
 }
 

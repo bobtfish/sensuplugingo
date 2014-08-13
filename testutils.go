@@ -15,7 +15,7 @@ func decodeCheckData(b []byte, c interface{}) (err error) {
     return json.Unmarshal(b, c)
 }
 
-type CheckResult struct {
+type Event struct {
 	Action string
 	Occurrences uint64
 	
