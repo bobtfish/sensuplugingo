@@ -1,18 +1,11 @@
-package testutils
+package sensuplugingo 
 
-import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-)
-
-func exampleData(fn string) ([]byte, error) {
-	bytes, err := ioutil.ReadFile(fmt.Sprintf("test_data/%s.json", fn))
-	return bytes, err
+type Handler interface {
+    Handle(Event) error
 }
 
-func decodeCheckData(b []byte, c interface{}) (err error) {
-	return json.Unmarshal(b, c)
+type Filter interface {
+    Filter(Event) (bool, error)
 }
 
 type Client struct {
@@ -41,3 +34,4 @@ type Event struct {
 	Action      string
 	Occurrences uint64
 }
+

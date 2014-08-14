@@ -3,10 +3,11 @@ package testutils
 import (
 	"fmt"
 	"testing"
+	"github.com/bobtfish/sensuplugingo"
 )
 
-func Test_exampleData(t *testing.T) {
-	b, err := exampleData("event01")
+func Test_ExampleData(t *testing.T) {
+	b, err := ExampleData("event01")
 	st := string(b)
 	if err != nil {
 		t.Error("error reading event01")
@@ -19,8 +20,8 @@ func Test_exampleData(t *testing.T) {
 	}
 }
 
-func Test_exampleDataFileNotFound(t *testing.T) {
-	_, err := exampleData("doesnotexist")
+func Test_ExampleDataFileNotFound(t *testing.T) {
+	_, err := ExampleData("doesnotexist")
 	if err != nil {
 		t.Log("error reading non existant file")
 	} else {
@@ -29,12 +30,12 @@ func Test_exampleDataFileNotFound(t *testing.T) {
 }
 
 func Test_decodeDataSimple(t *testing.T) {
-	d, err := exampleData("event01")
+	d, err := ExampleData("event01")
 	if err != nil {
 		t.Error("error loading event01")
 	}
 	var e map[string]interface{}
-	err = decodeCheckData(d, &e)
+	err = DecodeCheckData(d, &e)
 	if err != nil {
 		t.Error(fmt.Sprintf("error decodingCheckData for event01: %v", err))
 	}
@@ -46,12 +47,12 @@ func Test_decodeDataSimple(t *testing.T) {
 }
 
 func Test_decodeDataType(t *testing.T) {
-	d, err := exampleData("event01")
+	d, err := ExampleData("event01")
 	if err != nil {
 		t.Error("error loading event01")
 	}
-	var e Event
-	err = decodeCheckData(d, &e)
+	var e sensuplugingo.Event
+	err = DecodeCheckData(d, &e)
 	if err != nil {
 		t.Error(fmt.Sprintf("error decodingCheckDataType for event01: %v", err))
 	}
