@@ -1,11 +1,11 @@
-package sensuplugingo 
+package sensuplugingo
 
 type Handler interface {
-    Handle(Event) error
+	Handle(Event) error
 }
 
 type Filter interface {
-    Filter(Event) (bool, error)
+	Filter(Event) (bool, error)
 }
 
 type Client struct {
@@ -34,4 +34,3 @@ type Event struct {
 	Action      string
 	Occurrences uint64
 }
-

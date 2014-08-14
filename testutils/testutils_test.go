@@ -2,8 +2,8 @@ package testutils
 
 import (
 	"fmt"
-	"testing"
 	"github.com/bobtfish/sensuplugingo"
+	"testing"
 )
 
 func Test_ExampleData(t *testing.T) {

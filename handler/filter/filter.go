@@ -10,15 +10,15 @@ func filter(e sensuplugingo.Event) (bool, error) {
 		return r, err
 	}
 	r, err = FilterRepeated(e)
-        if r == true || err != nil {
-                return r, err
-        }
+	if r == true || err != nil {
+		return r, err
+	}
 	r, err = FilterSilenced(e)
-        if r == true || err != nil {
-                return r, err
-        }
+	if r == true || err != nil {
+		return r, err
+	}
 	r, err = FilterDependencies(e)
-         return r, err
+	return r, err
 }
 
 func FilterDisabled(e sensuplugingo.Event) (bool, error) {
@@ -26,14 +26,13 @@ func FilterDisabled(e sensuplugingo.Event) (bool, error) {
 }
 
 func FilterRepeated(e sensuplugingo.Event) (bool, error) {
-        return false, nil
+	return false, nil
 }
 
 func FilterSilenced(e sensuplugingo.Event) (bool, error) {
-        return false, nil
+	return false, nil
 }
 
 func FilterDependencies(e sensuplugingo.Event) (bool, error) {
-        return false, nil
+	return false, nil
 }
-

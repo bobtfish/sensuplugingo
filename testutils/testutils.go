@@ -14,4 +14,3 @@ func ExampleData(fn string) ([]byte, error) {
 func DecodeCheckData(b []byte, c interface{}) (err error) {
 	return json.Unmarshal(b, c)
 }
-
