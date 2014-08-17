@@ -4,7 +4,7 @@ import (
 	"github.com/bobtfish/sensuplugingo"
 )
 
-func filter(e sensuplugingo.Event) (bool, error) {
+func Filter(e sensuplugingo.Event) (bool, error) {
 	r, err := FilterDisabled(e)
 	if r == true || err != nil {
 		return r, err

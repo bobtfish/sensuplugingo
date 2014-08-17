@@ -70,3 +70,16 @@ func Test_FilterDependencies(t *testing.T) {
 		t.Error("Did filter")
 	}
 }
+
+func Test_Filter(t *testing.T) {
+	e := getExampleData(t)
+	f, err := Filter(e)
+	if err != nil {
+		t.Error("error filtering with Filter event01")
+	}
+	if f == false {
+		t.Log("Did not filter")
+	} else {
+		t.Error("Did filter")
+	}
+}
