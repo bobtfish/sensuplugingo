@@ -34,3 +34,8 @@ type Event struct {
 	Action      string
 	Occurrences uint64
 }
+
+func String(e Event) string {
+	return "SomeEvent"
+}
+
