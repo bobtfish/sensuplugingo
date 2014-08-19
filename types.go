@@ -1,5 +1,9 @@
 package sensuplugingo
 
+import (
+	"fmt"
+)
+
 type Handler interface {
 	Handle(Event) error
 }
@@ -35,6 +39,6 @@ type Event struct {
 	Occurrences uint64
 }
 
-func String(e Event) string {
-	return "SomeEvent"
+func (e Event) String() string {
+	return fmt.Sprintf("%s/%s", e.Client.Name, e.Check.Name)
 }
