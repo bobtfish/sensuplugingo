@@ -38,4 +38,3 @@ type Event struct {
 func String(e Event) string {
 	return "SomeEvent"
 }
-

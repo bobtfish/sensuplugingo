@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	event := handler.GetEventFromStdin
-	//if err != nil {
-	//	panic("Error getting Event")
-	//}
+	event, err := handler.GetEventFromStdin()
+	if err != nil {
+		panic("Error getting Event")
+	}
 	fmt.Println(event)
 }

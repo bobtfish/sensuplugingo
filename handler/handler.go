@@ -1,10 +1,11 @@
 package handler
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/bobtfish/sensuplugingo"
 	"io/ioutil"
 	"os"
-	"encoding/json"
 )
 
 func GetEventFromStdin() (e sensuplugingo.Event, err error) {
@@ -16,11 +17,9 @@ func GetEventFrom(in *os.File) (e sensuplugingo.Event, err error) {
 	if err != nil {
 		panic("Could not readall stdin")
 	}
-        err = json.Unmarshal(b, e)
+	err = json.Unmarshal(b, &e)
 	if err != nil {
-                panic("Could not decode json")
+		panic(fmt.Sprintf("Could not decode json: %s", err))
 	}
-	panic("Here")
 	return e, err
 }
-
